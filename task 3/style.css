@@ -1,0 +1,36 @@
+nav {
+    background: #333;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+
+  
+  /* The code below , is making this code responsive */
+  
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+    }
+    
+    nav ul li {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+  
