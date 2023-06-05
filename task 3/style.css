@@ -32,5 +32,9 @@ nav {
       margin-right: 0;
       margin-bottom: 5px;
     }
+
+    body{
+      background-color: red;
+    }
   }
   
