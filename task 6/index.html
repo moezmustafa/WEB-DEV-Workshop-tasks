@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer with Lap Times</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  
+  <style>
+    .timer {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 100px;
+    }
+
+    .lap-times {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .lap-times table {
+      margin: 0 auto;
+    }
+
+    .lap-times th,
+    .lap-times td {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer" id="timer">00:00:00</div>
+  
+  <div class="lap-times">
+    <table>
+      <thead>
+        <tr>
+          <th>Lap</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody id="lapTableBody">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    let lapCount = 1;
+
+    function countdown() {
+      // Set the countdown date (e.g., June 30, 2023 23:59:59)
+      const countdownDate = new Date("June 30, 2023 23:59:59").getTime();
+
+      const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Calculate the days, hours, minutes, and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        const timerElement = document.getElementById("timer");
+        timerElement.innerHTML = `${days.toString().padStart(2, "0")}:${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+        // Check if the countdown is over
+        if (distance < 0) {
+          clearInterval(timer);
+          timerElement.innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    }
+
+    function markLap() {
+      const timerElement = document.getElementById("timer");
+      const lapTime = timerElement.innerHTML;
+
+      const lapTableBody = document.getElementById("lapTableBody");
+      const newRow = document.createElement("tr");
+      const lapCell = document.createElement("td");
+      const timeCell = document.createElement("td");
+
+      lapCell.textContent = lapCount;
+      timeCell.textContent = lapTime;
+
+      newRow.appendChild(lapCell);
+      newRow.appendChild(timeCell);
+      lapTableBody.appendChild(newRow);
+
+      lapCount++;
+    }
+
+    countdown();
+  </script>
+  
+  <button onclick="markLap()">Mark Lap</button>
+</body>
+</html>
