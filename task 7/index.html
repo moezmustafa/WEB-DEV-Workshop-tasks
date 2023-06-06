@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      background-color: ivory;
+    }
+
+    body {
+      font-family: 'Muli', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      width: 1000vw;
+    }
+
+    .pannel {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      flex: 0.3;
+      margin: 0px auto;
+      width: 6vw;
+      transition: all 700ms ease-in;
+    }
+
+    .pannel h3 {
+      font-size: 24px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      margin: 0;
+      opacity: 0;
+    }
+
+    .pannel.active {
+      flex: 30;
+      width: 60vw;
+      transition: all 1.5s ease-in;
+    }
+
+    .pannel.active h3 {
+      opacity: 1;
+      transition: opacity 0.3s ease-in 0.4s;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 600vw;
+      }
+
+      .pannel:nth-of-type(4),
+      .pannel:nth-of-type(5) {
+        display: flex;
+      }
+    }
+  </style>
+  <title>Expanding Cards</title>
+</head>
+<body>
+
+
+    
+  <div class="container">
+    <div class="pannel active" style="background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+      <h3>MOEZ MUSTAFA</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pannel" style="background-image: url('https://images.unsplash.com/photo-1585317745493-2ff3dc00b33e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+      <h3>Video Games</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pannel" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+  </div>
+
+  <div class="container">
+    <div class="pannel" style="background-image: url('https://images.unsplash.com/photo-1507143027275-a7a29b190bb0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1368&q=80')">
+      <h3>Boats</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pannel" style="background-image: url('https://images.unsplash.com/photo-1446160657592-4782fb76fb99?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80')">
+      <h3>Travel</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pannel" style="background-image: url('https://images.unsplash.com/photo-1594950981383-6eb659d18fbf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80')">
+      <h3>Nerf</h3>
+    </div>
+  </div>
+
+  <script>
+    const pannels = document.querySelectorAll('.pannel');
+
+    pannels.forEach(pannel => {
+      pannel.addEventListener('click', () => {
+        removeActiveClasses();
+        pannel.classList.add('active');
+      });
+    });
+
+    function removeActiveClasses() {
+      pannels.forEach(pannel => {
+        pannel.classList.remove('active');
+      });
+    }
+  </script>
+</body>
+</html>
